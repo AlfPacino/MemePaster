@@ -1,0 +1,25 @@
+﻿<Window x:Class="MemePaster.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemePaster.Windows"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="300"
+        Width="300"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        ResizeMode="CanResizeWithGrip"
+        SizeChanged="Window_SizeChanged"
+        >
+    <DockPanel>
+        <StackPanel Name="stackPanelMenu" Orientation="Horizontal" DockPanel.Dock="Top">
+            <Button Name="buttonAddMeme" Click="buttonAddMeme_Click" Width="30" Height="30" />
+
+        </StackPanel>
+        <WrapPanel Name="wrapPanel">
+
+        </WrapPanel>
+    </DockPanel>
+</Window>
