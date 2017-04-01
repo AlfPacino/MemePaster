@@ -16,10 +16,8 @@
     <DockPanel>
         <StackPanel Name="stackPanelMenu" Orientation="Horizontal" DockPanel.Dock="Top">
             <Button Name="buttonAddMeme" Click="buttonAddMeme_Click" Width="30" Height="30" />
-
         </StackPanel>
         <WrapPanel Name="wrapPanel">
-
         </WrapPanel>
     </DockPanel>
 </Window>

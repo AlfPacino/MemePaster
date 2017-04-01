@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using MemePaster.Model;
 using System.IO;
+using MemePaster.Util;
 using Microsoft.Win32;
 
 namespace MemePaster.Windows
@@ -26,6 +27,7 @@ namespace MemePaster.Windows
     {
         Settings settings;
         const string settingsFileName = "Settings.xml";
+        //const int defaultMemeSize = 100;
         private void ApplySettings()
         {
             this.Height = settings.WindowHeight;
@@ -36,6 +38,36 @@ namespace MemePaster.Windows
             settings.WindowHeight = this.Height;
             settings.WindowWidth = this.Width;
         }
+        private void ReorganizeMemeCells()
+        {
+            wrapPanel.Children.Clear();
+            foreach (var meme in settings.MemeCells)
+            {
+                var img = new Image();
+                img.Source = Converter.BytesToImage(meme.Image);
+                var button = new MemeButton();
+                ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
+                button.Style = (Style)res["MemeButtonStyle"];
+                //button.Content = img;
+                button.MemeCell = new MemeCell(meme.Image, 0, 0);
+                button.Click += MemeClick;
+                var imgBrush = new ImageBrush();
+                imgBrush.ImageSource = Converter.BytesToImage(meme.Image);
+                button.Background = imgBrush;
+                //get style of image from resource dictionary
+                //ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
+                //img.Style = (Style)res["MemeStyle"];
+                //img.Source = Converter.BytesToImage(meme.Image);
+                //img.
+                wrapPanel.Children.Add(button);
+            }
+        }
+
+        private void MemeClick(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetImage(Converter.BytesToImage(((sender as MemeButton).MemeCell.Image)));
+        }
+        // Event handlers
         public MainWindow()
         {
             InitializeComponent();
@@ -55,7 +87,6 @@ namespace MemePaster.Windows
             {
                 settings = new Settings();
             }
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,22 +116,6 @@ namespace MemePaster.Windows
                     0)
                     );
                 ReorganizeMemeCells();
-            }
-        }
-
-
-        //const int defaultMemeSize = 100;
-        private void ReorganizeMemeCells()
-        {
-            wrapPanel.Children.Clear();
-            foreach (var meme in settings.MemeCells)
-            {
-                var img = new Image();
-                //get style of image from resource dictionary
-                ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
-                img.Style = (Style)res["MemeStyle"];
-                img.Source = Converter.BytesToImage(meme.Image);
-                wrapPanel.Children.Add(img);
             }
         }
 

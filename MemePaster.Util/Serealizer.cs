@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using MemePaster.Model;
 
-namespace MemePaster.Model
+namespace MemePaster.Util
 {
     public static class Serealizer
     {

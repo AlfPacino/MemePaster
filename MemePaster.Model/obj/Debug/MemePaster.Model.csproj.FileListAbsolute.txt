@@ -1,0 +1,5 @@
+D:\YandexDisk\MyPrograms\MemePaster\MemePaster.Model\bin\Debug\MemePaster.Model.dll
+D:\YandexDisk\MyPrograms\MemePaster\MemePaster.Model\bin\Debug\MemePaster.Model.pdb
+D:\YandexDisk\MyPrograms\MemePaster\MemePaster.Model\obj\Debug\MemePaster.Model.csprojResolveAssemblyReference.cache
+D:\YandexDisk\MyPrograms\MemePaster\MemePaster.Model\obj\Debug\MemePaster.Model.dll
+D:\YandexDisk\MyPrograms\MemePaster\MemePaster.Model\obj\Debug\MemePaster.Model.pdb

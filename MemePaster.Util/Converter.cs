@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace MemePaster.Model
+namespace MemePaster.Util
 {
     public static class Converter
     {
