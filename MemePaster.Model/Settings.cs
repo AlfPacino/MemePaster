@@ -14,6 +14,8 @@ namespace MemePaster.Model
             this.MemeCells = GenerateDefaultMemes();
             this.WindowHeight = 300;
             this.WindowWidth = 400;
+            MemeImageHeight = 150;
+            MemeImageWidth = 150;
         }
         public static List<MemeCell> GenerateDefaultMemes()
         {
@@ -24,5 +26,7 @@ namespace MemePaster.Model
         public List<MemeCell> MemeCells { get; set; }
         public double WindowWidth { get; set; }
         public double WindowHeight { get; set; }
+        public short MemeImageHeight { get; set; }
+        public short MemeImageWidth { get; set; }
     }
 }

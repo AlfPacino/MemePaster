@@ -5,19 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemePaster.Windows"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="Meme Paster" 
         Height="300"
         Width="300"
         Loaded="Window_Loaded"
         Closed="Window_Closed"
         ResizeMode="CanResizeWithGrip"
         SizeChanged="Window_SizeChanged"
+        PreviewMouseDown="MainWindow_OnMouseDown"
+        WindowStartupLocation="CenterScreen"
         >
     <DockPanel>
         <StackPanel Name="stackPanelMenu" Orientation="Horizontal" DockPanel.Dock="Top">
             <Button Name="buttonAddMeme" Click="buttonAddMeme_Click" Width="30" Height="30" />
         </StackPanel>
-        <WrapPanel Name="wrapPanel">
-        </WrapPanel>
+        <ScrollViewer>
+            <WrapPanel Name="wrapPanel">
+            </WrapPanel>
+        </ScrollViewer>
     </DockPanel>
 </Window>

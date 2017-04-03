@@ -46,25 +46,31 @@ namespace MemePaster.Windows
                 var img = new Image();
                 img.Source = Converter.BytesToImage(meme.Image);
                 var button = new MemeButton();
-                ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
+                var res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
                 button.Style = (Style)res["MemeButtonStyle"];
-                //button.Content = img;
-                button.MemeCell = new MemeCell(meme.Image, 0, 0);
+                button.MemeCell = new MemeCell(meme.Image);
                 button.Click += MemeClick;
                 var imgBrush = new ImageBrush();
                 imgBrush.ImageSource = Converter.BytesToImage(meme.Image);
                 button.Background = imgBrush;
-                //get style of image from resource dictionary
-                //ResourceDictionary res = (ResourceDictionary)Application.LoadComponent(new Uri("ResourceDictionaries/ResourceDictionary.xaml", UriKind.Relative));
-                //img.Style = (Style)res["MemeStyle"];
-                //img.Source = Converter.BytesToImage(meme.Image);
-                //img.
                 wrapPanel.Children.Add(button);
             }
         }
 
         private void MemeClick(object sender, RoutedEventArgs e)
         {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                foreach (var item in settings.MemeCells)
+                {
+                    if (item.Image == (sender as MemeButton).MemeCell.Image)
+                    {
+                        settings.MemeCells.Remove(item);
+                        break;
+                    }
+                }
+                ReorganizeMemeCells();
+            }
             Clipboard.SetImage(Converter.BytesToImage(((sender as MemeButton).MemeCell.Image)));
         }
         // Event handlers
@@ -106,15 +112,18 @@ namespace MemePaster.Windows
             var dialog = new OpenFileDialog();
             dialog.Title = "Open Meme";
             dialog.Filter = "jpg images (*.jpg)|*.jpg|png images (*.png)|*.png|bmp images (*.bmp)|*.bmp";
-            
+            dialog.Multiselect = true;
             if (dialog.ShowDialog() == true)
             {
-                // get image from dialog and save as MemeCell
-                settings.MemeCells.Add(
-                    new MemeCell(Converter.ImageToBytes(new BitmapImage(new Uri(dialog.FileName))),
-                    0,
-                    0)
-                    );
+                foreach (var memeImage in dialog.FileNames)
+                {
+                    // get meme image
+                    var bmImage = new BitmapImage(new Uri(memeImage));
+                    // change it`s size
+                    bmImage = ImageManager.ChangeImageSize(settings.MemeImageWidth, settings.MemeImageHeight, bmImage);
+                    // save as MemeCell
+                    settings.MemeCells.Add(new MemeCell(Converter.ImageToBytes(bmImage)));
+                }
                 ReorganizeMemeCells();
             }
         }
@@ -122,6 +131,12 @@ namespace MemePaster.Windows
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             ReorganizeMemeCells();
+        }
+
+        private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

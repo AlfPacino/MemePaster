@@ -9,14 +9,10 @@ namespace MemePaster.Model
     public class MemeCell
     {
         public MemeCell(){}
-        public MemeCell(byte[] imageBytes, short posX, short posY)
+        public MemeCell(byte[] imageBytes)
         {
             this.Image = imageBytes;
-            this.PosX = posX;
-            this.PosY = posY;
         }
         public byte[] Image { get; set; }
-        public short PosX { get; set; }
-        public short PosY { get; set; }
     }
 }
