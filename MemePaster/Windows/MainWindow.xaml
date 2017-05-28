@@ -12,15 +12,15 @@
         Closed="Window_Closed"
         ResizeMode="CanResizeWithGrip"
         SizeChanged="Window_SizeChanged"
-        PreviewMouseDown="MainWindow_OnMouseDown"
         WindowStartupLocation="CenterScreen"
+        
         >
     <DockPanel>
         <StackPanel Name="stackPanelMenu" Orientation="Horizontal" DockPanel.Dock="Top">
             <Button Name="buttonAddMeme" Click="buttonAddMeme_Click" Width="30" Height="30" />
         </StackPanel>
         <ScrollViewer>
-            <WrapPanel Name="wrapPanel">
+            <WrapPanel Name="wrapPanel" MouseDown="MainWindow_OnMouseDown">
             </WrapPanel>
         </ScrollViewer>
     </DockPanel>

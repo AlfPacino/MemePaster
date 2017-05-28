@@ -135,8 +135,8 @@ namespace MemePaster.Windows
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            //if (e.ChangedButton == MouseButton.Left)
-                //this.DragMove();
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }
