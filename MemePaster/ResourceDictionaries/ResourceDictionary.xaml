@@ -1,16 +1,17 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:MemePaster.ResourceDictionaries"
-                    xmlns:model="clr-namespace:MemePaster.Model;assembly=MemePaster.Model"
-                    xmlns:model1="clr-namespace:MemePaster.Model;assembly=MemePaster.Model">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MemePaster.ResourceDictionaries"
+    xmlns:model="clr-namespace:MemePaster.Model;assembly=MemePaster.Model"
+    xmlns:model1="clr-namespace:MemePaster.Model;assembly=MemePaster.Model">
 
-    
+
     <Style x:Key="MemeStyle" TargetType="Image">
         <Setter Property="Width" Value="100" />
         <Setter Property="Height" Value="100" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Stretch" Value="Fill" />
-        
+
     </Style>
 
     <Style x:Key="MemeButtonStyle" TargetType="model1:MemeButton">
@@ -20,17 +21,19 @@
         <!--<Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    --><!--<Border>
+        -->
+        <!--<Border>
                         <Image Stretch="Fill"></Image>
-                    </Border>--><!--
+                    </Border>-->
+        <!--
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            
+
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>-->
-        
+
     </Style>
 </ResourceDictionary>

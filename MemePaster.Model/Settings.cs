@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MemePaster.Model
 {
     [Serializable]
-    public class Settings
+    public class Settings : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         public Settings()
         {
             this.MemeCells = GenerateDefaultMemes();
