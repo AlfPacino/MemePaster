@@ -24,7 +24,13 @@
                 Name="buttonAddMeme"
                 Width="30"
                 Height="30"
-                Click="buttonAddMeme_Click" />
+                Command="{Binding AddMemeCommand}" />
+            <Button
+                Name="buttonAbout"
+                Width="30"
+                Height="30"
+                Command="{Binding AddMemeCommand}"
+                Content="About" />
         </StackPanel>
         <ScrollViewer>
             <WrapPanel Name="wrapPanel" MouseDown="MainWindow_OnMouseDown" />
